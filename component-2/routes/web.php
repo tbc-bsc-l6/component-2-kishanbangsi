@@ -20,6 +20,9 @@ Route::get('/', [BlogController::class, "index"]);
 // Route to create a blog
 Route::get('/create', [BlogController::class, "create"]);
 
+// Route to store a blog
+Route::post('/', [BlogController::class, "store"]);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
