@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -14,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view("index", ["posts" => Post::all()]);
+        return view("index", ["posts" => Post::orderBy("updated_at", "desc")->get()]);
     }
 
     /**
@@ -40,7 +41,14 @@ class BlogController extends Controller
             'description' => 'required'
         ]);
 
-        Post::create($request->all());
+        $slug = Str::slug($request->title, '-');
+
+        $post = new Post();
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->slug = $slug;
+        $post->save();
 
         return redirect('/');
     }
@@ -51,9 +59,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return view("show", ["post" => Post::where("slug", $slug)->first()]);
     }
 
     /**
@@ -87,6 +95,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect('/');
     }
 }
