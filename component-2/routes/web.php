@@ -23,6 +23,16 @@ Route::get('/create', [BlogController::class, "create"]);
 // Route to store a blog
 Route::post('/', [BlogController::class, "store"]);
 
+// Route to show a specific blog
+Route::get('/show/{slug}', [BlogController::class, "show"]);
+
+// Route to edit a specific blog
+Route::get('/edit/{$id}', [BlogController::class, "edit"]);
+
+// Route to delete a specific blog
+Route::delete('/delete/{id}', [BlogController::class, "destroy"]);
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
