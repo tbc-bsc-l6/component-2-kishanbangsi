@@ -11,7 +11,7 @@
 
         <div @class(['container', 'col-md-10', 'mx-auto', 'mt-3'])>
             <a href="/" class="btn btn-secondary">Home</a>
-            <a href="/edit/{slug}" class="btn btn-primary">Edit</a>
+            <a href="/edit/{{ $post->slug }}" class="btn btn-primary">Edit</a>
             <form action="/delete/{{ $post->id }}" method="post" class="d-inline">
                 @csrf
                 @method('DELETE')
