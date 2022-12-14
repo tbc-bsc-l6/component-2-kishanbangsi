@@ -70,9 +70,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        return view("edit", ["post" => Post::where("slug", $slug)->first()]);
     }
 
     /**
@@ -84,7 +84,21 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        $slug = Str::slug($request->title, '-');
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->slug = $slug;
+        $post->save();
+
+        return redirect('/');
     }
 
     /**
