@@ -9,13 +9,13 @@
             @csrf
             <div class="mt-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" id="title" min="3" class="form-control" required>
+                <input type="text" name="title" id="title" class="form-control" required>
             </div>
             <div class="mt-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea name="description" id="description" cols="30"
-                    rows="10"
-                    class="form-control" required>
+                rows="10"
+                class="form-control" required>
                 </textarea>
             </div>
             <a href="/" class="btn btn-secondary mt-3">Cancel</a>
