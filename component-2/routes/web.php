@@ -27,7 +27,10 @@ Route::post('/', [BlogController::class, "store"]);
 Route::get('/show/{slug}', [BlogController::class, "show"]);
 
 // Route to edit a specific blog
-Route::get('/edit/{$id}', [BlogController::class, "edit"]);
+Route::get('/edit/{slug}', [BlogController::class, "edit"]);
+
+//Route to store an updated blog
+Route::put('/edit/{id}', [BlogController::class, "update"]);
 
 // Route to delete a specific blog
 Route::delete('/delete/{id}', [BlogController::class, "destroy"]);
