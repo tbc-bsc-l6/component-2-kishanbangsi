@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+// Route for home page
+Route::get('/', [JobController::class, 'index'])->name('index');
+
+// Route for register page
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+// Route for login page
+Route::get('/login', [AuthController::class, 'login'])->name('login');
