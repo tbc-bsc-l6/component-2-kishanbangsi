@@ -23,16 +23,16 @@
             <div class="hidden md:block">
                 <ul class="flex flex-col items-center space-x-9 md:flex-row">
                     <li>
-                        <a href="#" class="navlinks">Home</a>
+                        <a href="{{ route('index') }}" class="navlinks">Home</a>
                     </li>
                     <li>
                         <a href="#" class="navlinks">Jobs</a>
                     </li>
                     <li>
-                        <a href="#" class="navlinks">Login</a>
+                        <a href="{{ route('login') }}" class="navlinks">Login</a>
                     </li>
                     <li>
-                        <a href="#" class="navlinks">Register</a>
+                        <a href="{{ route('register') }}" class="navlinks">Register</a>
                     </li>
                 </ul>
             </div>
