@@ -18,6 +18,9 @@ use App\Http\Controllers\AuthController;
 // Route for home page
 Route::get('/', [JobController::class, 'index'])->name('index');
 
+// Route for jobs page
+Route::get('/jobs', [JobController::class, 'all'])->name('jobs');
+
 // Route for register page
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
