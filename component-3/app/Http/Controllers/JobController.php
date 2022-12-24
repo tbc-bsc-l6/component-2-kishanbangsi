@@ -81,4 +81,14 @@ class JobController extends Controller
     {
         //
     }
+
+    /**
+     * Get all resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all()
+    {
+        return view('pages.jobs');
+    }
 }
