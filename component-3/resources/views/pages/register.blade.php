@@ -10,14 +10,14 @@
                 @csrf
                 <div class="my-5">
                     <label for="name" class="block text-white my-1">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Name" class="text-white py-2 px-4 w-full bg-indigo-500 outline-none rounded-md">
+                    <input type="text" name="name" id="name" placeholder="Name" class="text-white py-2 px-4 w-full bg-indigo-500 outline-none rounded-md required">
                 </div>
 
                 <x-authform />
                 
                 <div class="my-5">
                     <label for="confirm_password" class="block text-white my-1">Confirm Password</label>
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="text-white py-2 px-4 w-full bg-indigo-500 outline-none rounded-md">
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="text-white py-2 px-4 w-full bg-indigo-500 outline-none rounded-md required">
                 </div>
                 <button type="submit" class="font-semibold w-full py-2 px-4 mt-3 bg-white rounded-md hover:bg-gray-200 transition ease-in-out duration-500">Register</button>
             </form>
