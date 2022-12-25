@@ -3,19 +3,21 @@
         <div class="col-span-2 text-center py-4 px-5 bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
             <h1 class="font-bold text-xl">Books</h1>
             <ul class="font-semibold space-y-6 mt-8">
-                <li class="list mytransition"><a href="{{ route('show', ['id' => 1]) }}">Crime and Punishment</a></li>
-                <li class="list mytransition"><a href="#">The Brothers Karamazov</a></li>
-                <li class="list mytransition"><a href="#">Demons</a></li>
-                <li class="list mytransition"><a href="#">IT</a></li>
+            @foreach ($products as $product)
+                @if ($product->product == 'book')
+                <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->fname }} {{ $product->sname }}</a></li>        
+                @endif
+            @endforeach
             </ul>
         </div>
         <div class="col-span-2 text-center py-4 px-5 bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
             <h1 class="font-bold text-xl">CDs</h1>
             <ul class="font-semibold space-y-6 mt-8">
-                <li class="list mytransition"><a href="#">Seeking Thrills</a></li>
-                <li class="list mytransition"><a href="#">One Punch Man</a></li>
-                <li class="list mytransition"><a href="#">Chainsaw Man</a></li>
-                <li class="list mytransition"><a href="#">Interstellar</a></li>
+                @foreach ($products as $product)
+                    @if ($product->product == 'cd')
+                    <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->fname }} {{ $product->sname }}</a></li>        
+                    @endif
+                @endforeach
             </ul>
         </div>
     </section>
