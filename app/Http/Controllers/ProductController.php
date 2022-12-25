@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        return view('pages.index', [
+            'products' => Product::latest()->paginate(6)
+        ]);
     }
 
     /**
@@ -34,7 +37,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $request->validate([
+            'title' => 'required|string',
+            'fname' => 'sometimes|string|nullable',
+            'sname' => 'required|string',
+            'price' => 'required|numeric',
+            'pages' => 'required|numeric',
+            'product' => 'required|string'
+        ]);
+
+        Product::create($product);
+
+        return redirect('/');
     }
 
     /**
@@ -43,9 +57,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return view('pages.show');
+
+        return view('pages.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -54,9 +71,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('pages.edit', [
+            'product' => $product 
+        ]);
     }
 
     /**
@@ -66,9 +85,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $productList = $request->validate([
+            'title' => 'required|string',
+            'fname' => 'sometimes|string|nullable',
+            'sname' => 'required|string',
+            'price' => 'required|numeric',
+            'pages' => 'required|numeric',
+            'product' => 'required|string'
+        ]);
+
+        $product->update($productList);
+
+        return redirect('/');
     }
 
     /**
@@ -77,8 +107,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect('/');
     }
 }
