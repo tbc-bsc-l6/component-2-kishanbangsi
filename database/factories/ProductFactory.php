@@ -17,7 +17,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title(),
+            'title' => $this->faker->word(),
             'fname' => $this->faker->firstName(),
             'sname' => $this->faker->lastName(),
             'price' => $this->faker->numberBetween($min = 1, $max = 20),
