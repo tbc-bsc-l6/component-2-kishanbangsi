@@ -1,24 +1,25 @@
 <x-layout>
-    <section class="grid grid-cols-2 gap-8 py-32 px-10 h-screen border border-blue-500">
-        <div class="col-span-2 text-center py-4 px-5 bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
-            <h1 class="font-bold text-xl">Books</h1>
-            <ul class="font-semibold space-y-6 mt-8">
-            @foreach ($products as $product)
-                @if ($product->product == 'book')
-                <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->title }}</a></li>        
-                @endif
-            @endforeach
-            </ul>
+    <section class="flex justify-center items-center h-screen">
+        <div>
+            <h1 class="heading-dark">Your one stop for everything</h1>
+            <p class="text-gray-600 mt-3">Search and shop products in one place.</p>
+            <form action="#" class="flex flex-col mt-10">
+                <label for="search" class="font-bold text-gray-600 mt-3">Search for products</label>
+                <input type="text" name="search" placeholder="Name, category, tags..." class="input-class" required>
+                <button class="btn">Search</button>
+            </form>
         </div>
-        <div class="col-span-2 text-center py-4 px-5 bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
-            <h1 class="font-bold text-xl">CDs</h1>
-            <ul class="font-semibold space-y-6 mt-8">
-                @foreach ($products as $product)
-                    @if ($product->product == 'cd')
-                    <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->title }}</a></li>        
-                    @endif
-                @endforeach
-            </ul>
+    </section>
+
+    <section class="flex flex-col justify-content h-full py-24 px-10 ">
+        <div class="text-center">
+            <h1 class="title-dark">Featured Products</h1>
+            <p class="text-gray-600 mt-3">Our featured products</p>
+        </div>
+        <div class="grid grid-cols-1 gap-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
+            <x-card/>
+            <x-card/>
+            <x-card/>
         </div>
     </section>
 </x-layout>
