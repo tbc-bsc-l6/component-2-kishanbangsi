@@ -5,7 +5,7 @@
             <ul class="font-semibold space-y-6 mt-8">
             @foreach ($products as $product)
                 @if ($product->product == 'book')
-                <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->fname }} {{ $product->sname }}</a></li>        
+                <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->title }}</a></li>        
                 @endif
             @endforeach
             </ul>
@@ -15,7 +15,7 @@
             <ul class="font-semibold space-y-6 mt-8">
                 @foreach ($products as $product)
                     @if ($product->product == 'cd')
-                    <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->fname }} {{ $product->sname }}</a></li>        
+                    <li class="list mytransition"><a href="{{ route('show', ['product' => $product->id]) }}">{{ $product->title }}</a></li>        
                     @endif
                 @endforeach
             </ul>
