@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +18,29 @@ use App\Http\Controllers\ProductController;
 // Route to get all products
 Route::get('/', [ProductController::class, 'index'])->name('index');
 
-// Route to get form to create a product
-Route::get('/products/create', [ProductController::class, 'create'])->name('create');
+Route::prefix('/products')->group(function () {
+    // Route to get form to create a product
+    Route::get('/create', [ProductController::class, 'create'])->name('create');
 
-// Route to get a single product
-Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('show');
+    // Route to get a single product
+    Route::get('/show/{product}', [ProductController::class, 'show'])->name('show');
 
-// Route to store a product
-Route::post('/', [ProductController::class, 'store'])->name('store');
+    // Route to store a product
+    Route::post('/', [ProductController::class, 'store'])->name('store');
 
-// Route to delete a product
-Route::delete('/{product}', [ProductController::class, 'destroy'])->name('delete');
+    // Route to get form to update a product
+    Route::get('/update/{product}', [ProductController::class, 'edit'])->name('edit');
 
-// Route to get form to update a product
-Route::get('/products/update/{product}', [ProductController::class, 'edit'])->name('edit');
+    // Route to update a product
+    Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
 
-// Route to update a product
-Route::put('/products/update/{product}', [ProductController::class, 'update'])->name('update');
+    // Route to delete a product
+    Route::delete('/{product}', [ProductController::class, 'destroy'])->name('delete');
+});
+
+
+// Route to get login page
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+// Route to get register page
+Route::get('/register', [AuthController::class, 'register'])->name('register');
