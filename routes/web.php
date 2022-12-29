@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::get('/', [ProductController::class, 'index'])->name('index');
 Route::prefix('/products')->group(function () {
     // Route to get form to create a product
     Route::get('/create', [ProductController::class, 'create'])->name('create');
+
+    // Route to get categories
+    Route::get('/categories', [PageController::class, 'categories'])->name('categories');
 
     // Route to get a single product
     Route::get('/show/{product}', [ProductController::class, 'show'])->name('show');

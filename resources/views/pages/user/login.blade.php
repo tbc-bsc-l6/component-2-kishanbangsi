@@ -7,8 +7,9 @@
             <div class="w-full py-4 px-6 md:w-1/2">
                 <h1 class="title-dark text-center">Login</h1>
                 <form action="#" method="POST" class="mt-4">
-                    <x-form />
-                    <button type="submit" class="btn">Login</button>
+                    <x-input />
+                    <p>Don't have an account?<a href="#" class="link ml-2 underline">Create one</a></p>
+                    <button type="submit" class="btn mt-3">Login</button>
                 </form>
             </div>
         </div>

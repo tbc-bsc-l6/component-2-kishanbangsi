@@ -11,15 +11,15 @@
         </div>
     </section>
 
-    <section class="flex flex-col justify-content h-full py-24 px-10 ">
+    <section class="flex flex-col justify-content h-full py-24 px-10 bg-gray-50">
         <div class="text-center">
             <h1 class="title-dark">Featured Products</h1>
             <p class="text-gray-600 mt-3">Our featured products</p>
         </div>
         <div class="grid grid-cols-1 gap-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
-            <x-card/>
-            <x-card/>
-            <x-card/>
+            <x-product-card/>
+            <x-product-card/>
+            <x-product-card/>
         </div>
     </section>
 </x-layout>

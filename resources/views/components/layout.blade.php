@@ -8,9 +8,9 @@
     <title>SmallMart</title>
 </head>
 <body class="poppins">
-    <x-nav />
+    <x-nav.nav />
     {{ $slot }}
     <x-footer />
-    <script src="js/script.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

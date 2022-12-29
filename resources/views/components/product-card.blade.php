@@ -1,4 +1,4 @@
-<div class="col-span-1 flex flex-col py-4 px-6 items-center border border-gray-200 rounded-lg shadow-lg">
+<div class="col-span-1 flex flex-col py-4 px-6 items-center border border-gray-200 bg-white rounded-lg shadow-lg">
     <img src="images/bookcover1.jpg" alt="bookcover" class="my-5 w-36 h-56">
     <div class="text-center mx-2 px-1 border-t border-gray-300 lg:text-start">
         <h3 class="font-semibold text-xl text-center mt-5">Crime and Punishment</h3>

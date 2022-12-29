@@ -14,7 +14,7 @@
                         <x-error :message={{ $message }}/>
                         @enderror
                     </div>
-                    <x-form />
+                    <x-input />
                     <div class="mt-3">
                         <label for="password_confirmation" class="block">Confirm Password</label>
                         <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" class="w-full input-class" required>
@@ -22,7 +22,8 @@
                         <x-error :message={{ $message }}/>
                         @enderror
                     </div>
-                    <button type="submit" class="btn">Register</button>
+                    <p>Already have an account?<a href="#" class="link ml-2 underline">Login</a></p>
+                    <button type="submit" class="btn mt-3">Register</button>
                 </form>
             </div>
         </div>

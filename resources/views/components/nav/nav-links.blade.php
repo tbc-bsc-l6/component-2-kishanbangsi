@@ -2,7 +2,7 @@
     <a href="{{ route('index') }}" class="navlinks">Home</a>
 </li>
 <li>
-    <a href="#" class="navlinks">Categories</a>
+    <a href="{{ route('categories') }}" class="navlinks">Categories</a>
 </li>
 <li>
     <a href="{{ route('login') }}" class="navlinks">Login</a>
