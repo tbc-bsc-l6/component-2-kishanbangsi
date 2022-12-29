@@ -9,5 +9,13 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'fname', 'sname', 'price', 'pages', 'product'];
+    protected $fillable = ['title', 'user_id', 'author', 'band', 'studio', 
+        'price', 'pages', 'playlength', 'description', 'image'
+    ];
+
+    // Relationship with User table
+    public function users() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }
