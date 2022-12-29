@@ -24,7 +24,7 @@ Route::prefix('/products')->group(function () {
     Route::get('/create', [ProductController::class, 'create'])->name('create');
 
     // Route to get categories
-    Route::get('/categories', [PageController::class, 'categories'])->name('categories');
+    Route::get('/all', [PageController::class, 'all'])->name('all');
 
     // Route to get a single product
     Route::get('/show/{product}', [ProductController::class, 'show'])->name('show');

@@ -16,10 +16,12 @@
             <h1 class="title-dark">Featured Products</h1>
             <p class="text-gray-600 mt-3">Our featured products</p>
         </div>
-        <div class="grid grid-cols-1 gap-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
-            <x-product-card/>
-            <x-product-card/>
-            <x-product-card/>
+        <div class="grid grid-cols-3 gap-10 mt-14 md:grid-cols-2 lg:grid-cols-3">
+            @unless ($products == null)
+                @foreach ($products as $product)
+                <x-product-card :products='$product'/>
+                @endforeach
+            @endunless
         </div>
     </section>
 </x-layout>

@@ -23,10 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Product::factory(20)
+        Product::factory(150)
         ->state(new Sequence(
             ['product' => 'book'],
-            ['product' => 'cd']
+            ['product' => 'cd'],
+            ['product' => 'game']
         ))
         ->create();
     }

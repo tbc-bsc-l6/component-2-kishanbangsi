@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class PageController extends Controller
 {
-    public function categories() 
+    public function all() 
     {
-        return view('pages.categories');
+        return view('pages.all-products', [
+            'products' => Product::latest()->paginate(9)
+        ]);
     }
 }
