@@ -5,6 +5,9 @@
     <a href="{{ route('all') }}" class="navlinks">All Products</a>
 </li>
 <li>
+    <a href="{{ route('create') }}" class="navlinks">Add Product</a>
+</li>
+<li>
     <a href="{{ route('login') }}" class="navlinks">Login</a>
 </li>
 <li>

@@ -10,7 +10,7 @@
         </div>
         <!-- Links -->
         <div class="hidden md:block">
-            <ul class="flex flex-col items-center space-x-6 md:flex-row">
+            <ul class="flex flex-col items-center space-x-4 md:flex-row">
                 <x-nav.nav-links/>
             </ul>
         </div>

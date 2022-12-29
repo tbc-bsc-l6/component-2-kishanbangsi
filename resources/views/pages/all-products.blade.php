@@ -28,7 +28,7 @@
             @endunless
             
         </div>
-        <div class="flex justify-center mt-10 mx-20">
+        <div class="flex justify-center mt-16">
             {{ $products->links() }}
         </div>
     </section>
