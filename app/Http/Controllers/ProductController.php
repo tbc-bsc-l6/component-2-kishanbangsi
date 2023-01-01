@@ -38,13 +38,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = $request->validate([
+            'category_id' => 'numeric|nullable',
             'title' => 'required|string',
-            'fname' => 'sometimes|string|nullable',
-            'sname' => 'required|string',
+            'author' => 'string|nullable',
+            'band' => 'string|nullable',
+            'studio' => 'string|nullable',
             'price' => 'required|numeric',
-            'pages' => 'required|numeric',
-            'product' => 'required|string'
+            'pages' => 'numeric|nullable',
+            'playlength' => 'numeric|nullable',
+            'description' => 'string|nullable',
         ]);
+
+        $product['user_id'] = 1;
+
+        if($request->hasFile('image'))
+        {
+            $product['image'] = $request->file('image')->store('uploaded_images', 'public');
+        }
 
         Product::create($product);
 

@@ -1,9 +1,9 @@
 <div class="mb-8">
-    <label for="product" class="font-semibold mr-2">Product Type: </label>
-    <select name="product" id="product" class="border border-gray-300 rounded-md outline-none">
-        <option value="book">Book</option>
-        <option value="cd">CD</option>
-        <option value="game">Game</option>
+    <label for="category_id" class="font-semibold mr-2">Product Type: </label>
+    <select name="category_id" id="product" class="border border-gray-300 rounded-md outline-none">
+        <option value="1">Book</option>
+        <option value="2">Game</option>
+        <option value="3">CD</option>
     </select>
 </div>
 
@@ -28,7 +28,7 @@
 
 <div class="my-3">
     <label for="description" class="block font-semibold text-gray-600">Description</label>
-    <textarea type="text" name="description" id="description" placeholder="Description" class="w-full input-class" required>{{ old('description') }}</textarea>
+    <textarea type="text" name="description" id="description" placeholder="Description" class="w-full input-class">{{ old('description') }}</textarea>
     @error('description')<x-error :message="$message"/>@enderror
 </div>
 

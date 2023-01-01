@@ -16,16 +16,15 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('category_id')->constrained('products')->onDelete('cascade');
             $table->string('title');
             $table->string('author')->nullable();
+            $table->integer('pages')->nullable();
             $table->string('band')->nullable();
             $table->string('studio')->nullable();
-            $table->integer('price');
-            $table->integer('pages')->nullable();
             $table->integer('playlength')->nullable();
+            $table->integer('price');
             $table->longText('description')->nullable();
-            $table->text('image')->nullable();
+            $table->text('image')->nullable()->default('default.jpg');
             $table->timestamps();
         });
     }

@@ -17,15 +17,15 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->word(),
-            'author' => $this->faker->name(),
-            'band' => $this->faker->word(),
-            'studio' => $this->faker->catchPhrase(),
-            'price' => $this->faker->numberBetween($min = 1, $max = 20),
-            'pages' => $this->faker->numberBetween($min = 1, $max = 5000),
-            'playlength' => $this->faker->numberBetween($min = 1, $max = 1000),
-            'description' => $this->faker->paragraph(),
-            'image' => 'default.jpg'
+            'title' => fake()->word(),
+            'author' => fake()->name(),
+            'pages' => fake()->numberBetween($min = 1, $max = 5000),
+            'band' => fake()->word(),
+            'studio' => fake()->catchPhrase(),
+            'playlength' => fake()->numberBetween($min = 1, $max = 1000),
+            'price' => fake()->numberBetween($min = 1, $max = 20),
+            'description' => fake()->paragraph(),
+            'image' => fake()->imageUrl(36, 56, 'animals', true)
         ];
     }
 }
