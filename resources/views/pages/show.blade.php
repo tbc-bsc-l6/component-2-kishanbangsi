@@ -1,16 +1,30 @@
 <x-layout>
-    <section class="py-32 px-10 border border-blue-500">
+    <section class="py-32 px-10">
         <div class="w-1/2 text-center py-6 px-5 mx-auto bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
-            <h1 class="font-bold text-xl">Book</h1>
+            <img 
+                src="{{ $product->image ? asset('storage/' . $product->image) : asset('storage/uploaded_images/default.jpg') }}" 
+                alt="product" class="my-5 mx-auto w-36 h-auto"
+            >
             <div class="font-semibold space-y-3 mt-8 my-10">
-                <h1 class="font-semibold text-xl">Title: {{ $product->title }}</h1>
-                <p>Author: {{ $product->fname }} {{ $product->sname }}</p>
-                <p>Price: ${{ $product->price }}</p>
-                @if ($product->product == 'book')
-                <p>Pages: {{ $product->pages }}</p>
+                <h1 class="font-semibold text-xl">Title: <span class="font-light">{{ $product->title }}</span></h1>
+
+                @if ($product->category == 'book')
+                <p>Author: <span class="font-light">{{ $product->author}}</span></p>
+                @elseif($product->category == 'game')
+                <p>Studio: <span class="font-light">{{ $product->studio}}</span></p>
                 @else
-                <p>Playlength: {{ $product->pages }}</p>
+                <p>Band: <span class="font-light">{{ $product->band}}</span></p>
                 @endif
+
+                <p>Price: <span class="font-light">${{ $product->price }}</span></p>
+
+                @if ($product->category == 'book')
+                <p>Pages: <span class="font-light">{{ $product->pages }}</span></p>
+                @else
+                <p>Playlength: <span class="font-light">{{ $product->playlength }}</span></p>
+                @endif
+
+                <p>Description: <span class="font-light">{{ $product->description }}</span></p>
             </div>
             <div class="flex justify-between">
                 <a href="{{ route('edit', ['product' => $product->id]) }}" class="btn mytransition">Update</a>

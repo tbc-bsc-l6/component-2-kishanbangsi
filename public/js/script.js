@@ -16,7 +16,7 @@ const cd = document.querySelector('#band');
 const game = document.querySelector('#studio');
 const page = document.querySelector('#pages');
 const playlength = document.querySelector('#playlength');
-const productType = document.querySelector('#product');
+const productType = document.querySelector('#category');
 
 // When page loads
 if (productType.value == "book") {

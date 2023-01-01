@@ -38,15 +38,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = $request->validate([
-            'category_id' => 'numeric|nullable',
             'title' => 'required|string',
             'author' => 'string|nullable',
+            'pages' => 'numeric|nullable',
             'band' => 'string|nullable',
             'studio' => 'string|nullable',
-            'price' => 'required|numeric',
-            'pages' => 'numeric|nullable',
             'playlength' => 'numeric|nullable',
+            'price' => 'required|numeric',
             'description' => 'string|nullable',
+            'category' => 'required|string',
         ]);
 
         $product['user_id'] = 1;
@@ -69,7 +69,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
         return view('pages.show', [
             'product' => $product
         ]);
@@ -97,16 +96,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $productList = $request->validate([
+        $formProduct = $request->validate([
             'title' => 'required|string',
-            'fname' => 'sometimes|string|nullable',
-            'sname' => 'required|string',
+            'author' => 'string|nullable',
+            'pages' => 'numeric|nullable',
+            'band' => 'string|nullable',
+            'studio' => 'string|nullable',
+            'playlength' => 'numeric|nullable',
             'price' => 'required|numeric',
-            'pages' => 'required|numeric',
-            'product' => 'required|string'
+            'description' => 'string|nullable',
+            'category' => 'required|string',
         ]);
 
-        $product->update($productList);
+        $formProduct['user_id'] = 1;
+
+        if($request->hasFile('image'))
+        {
+            $formProduct['image'] = $request->file('image')->store('uploaded_images', 'public');
+        }
+
+        $product->update($formProduct);
 
         return redirect('/');
     }

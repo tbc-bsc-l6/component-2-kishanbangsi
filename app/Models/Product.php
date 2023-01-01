@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = [
         'user_id', 'title', 'author', 'pages',
         'band', 'studio', 'playlength', 'price',
-        'description', 'image'
+        'description', 'image', 'category'
     ];
 
     // Relationship with User table

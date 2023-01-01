@@ -24,7 +24,8 @@ return new class extends Migration
             $table->integer('playlength')->nullable();
             $table->integer('price');
             $table->longText('description')->nullable();
-            $table->text('image')->nullable()->default('default.jpg');
+            $table->text('image')->nullable();
+            $table->string('category');
             $table->timestamps();
         });
     }

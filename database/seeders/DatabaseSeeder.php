@@ -17,9 +17,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(1)->has(
-            Product::factory()->count(5)
-        )
-        ->create();
+        // User::factory(1)->has(
+        //     Product::factory()->count(5)->state(new Sequence(
+        //         ['category' => 'book'],
+        //         ['category' => 'game'],
+        //         ['category' => 'cd']
+        //     ))
+        // )
+        // ->create();
+
+        User::factory(1)->create();
     }
 }
