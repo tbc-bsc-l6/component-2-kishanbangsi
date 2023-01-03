@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -38,20 +39,11 @@ class AuthController extends Controller
     }
 
     // Create new user
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $formFields = $request->validate([
-            'name' => 'required|min:3|max:50|string',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:7'
-        ]);
+        User::create($request->validated());
 
-        // Hash password
-        $formFields['password'] = bcrypt($request->password);
-
-        User::create($formFields);
-
-        return redirect('/')->withSuccess('Account created successfully!');
+        return redirect('/users/login')->withSuccess('Account created successfully!');
     }
 
     // Logout user

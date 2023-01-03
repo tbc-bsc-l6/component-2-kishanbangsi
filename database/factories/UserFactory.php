@@ -20,7 +20,8 @@ class UserFactory extends Factory
         return [
             'name' => 'Ajax Goddard',
             'email' => "ajax@gmail.com",
-            'password' => '123456'              // password
+            'password' => '123456',              // password
+            'role' => 'admin'
         ];
     }
 

@@ -8,6 +8,7 @@
                 <h1 class="title-dark text-center">Register</h1>
                 <form action="{{ route('user.store') }}" method="POST" class="mt-4">
                     @csrf
+                    <input type="hidden" id="role" name="role" value="user">
                     <div class="w-full mt-3">
                         <label for="name" class="block">Name</label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Name" class="w-full input-class" required>

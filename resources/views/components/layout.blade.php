@@ -10,7 +10,6 @@
 </head>
 <body class="poppins">
     <x-nav.nav />
-    <x-flash-message />
     {{ $slot }}
     <x-footer />
     <script src="{{ asset('js/script.js') }}"></script>
