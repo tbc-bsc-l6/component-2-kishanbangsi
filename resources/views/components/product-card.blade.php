@@ -1,7 +1,7 @@
 @props(['products'])
 
 <div class="col-span-3 flex flex-col py-4 px-6 items-center border border-gray-200 bg-white rounded-lg shadow-lg md:col-span-1">
-    <img src="{{ $products->image ? asset('storage/' . $products->image) : asset('storage/uploaded_images/default.jpg') }}" alt="product" class="my-5 w-36 h-auto">
+    <img src="{{ $products->image ? asset('storage/' . $products->image) : asset('images/default1.jpg') }}" alt="product" class="my-5 w-auto h-56">
     <div class="text-center w-full mx-2 px-1 border-t border-gray-300 lg:text-start">
         <h3 class="font-semibold text-xl text-center mt-5">{{ $products->title }}</h3>
         <p class="mt-3 mb-3">{{ Str::limit(strip_tags($products->description), 40) }}</p>

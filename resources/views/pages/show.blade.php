@@ -2,8 +2,8 @@
     <section class="py-32 px-10">
         <div class="w-1/2 text-center py-6 px-5 mx-auto bg-white rounded-lg shadow-lg border border-gray-200 overflow-y-auto md:col-span-1">
             <img 
-                src="{{ $product->image ? asset('storage/' . $product->image) : asset('storage/uploaded_images/default.jpg') }}" 
-                alt="product" class="my-5 mx-auto w-36 h-auto"
+                src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/default1.jpg') }}" 
+                alt="product" class="my-5 mx-auto w-auto h-56"
             >
             <div class="font-semibold space-y-3 mt-8 my-10">
                 <h1 class="font-semibold text-xl">Title: <span class="font-light">{{ $product->title }}</span></h1>
@@ -21,7 +21,7 @@
                 @if ($product->category == 'book')
                 <p>Pages: <span class="font-light">{{ $product->pages }}</span></p>
                 @else
-                <p>Playlength: <span class="font-light">{{ $product->playlength }}</span></p>
+                <p>Playlength: <span class="font-light">{{ $product->playlength }} min</span></p>
                 @endif
 
                 <p>Description: <span class="font-light">{{ $product->description }}</span></p>

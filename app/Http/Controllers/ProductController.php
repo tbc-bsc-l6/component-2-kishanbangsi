@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -35,19 +36,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $product = $request->validate([
-            'title' => 'required|string',
-            'author' => 'string|nullable',
-            'pages' => 'numeric|nullable',
-            'band' => 'string|nullable',
-            'studio' => 'string|nullable',
-            'playlength' => 'numeric|nullable',
-            'price' => 'required|numeric',
-            'description' => 'string|nullable',
-            'category' => 'required|string',
-        ]);
+        $product = $request->validated();
 
         $product['user_id'] = 1;
 
@@ -94,28 +85,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        $formProduct = $request->validate([
-            'title' => 'required|string|max:100',
-            'author' => 'string|nullable|max:100',
-            'pages' => 'numeric|nullable',
-            'band' => 'string|nullable|max:30',
-            'studio' => 'string|nullable|max:100',
-            'playlength' => 'numeric|nullable',
-            'price' => 'required|numeric',
-            'description' => 'string|nullable',
-            'category' => 'required|string',
-        ]);
+        $validatedRequest = $request->validated();
 
-        $formProduct['user_id'] = 1;
+        $validatedRequest['user_id'] = 1;
 
         if($request->hasFile('image'))
         {
-            $formProduct['image'] = $request->file('image')->store('uploaded_images', 'public');
+            $validatedRequest['image'] = $request->file('image')->store('uploaded_images', 'public');
         }
 
-        $product->update($formProduct);
+        $product->update($validatedRequest);
 
         return redirect('/');
     }
