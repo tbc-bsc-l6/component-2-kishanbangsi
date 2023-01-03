@@ -43,8 +43,18 @@ Route::prefix('/products')->group(function () {
 });
 
 
-// Route to get login page
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::prefix('/users')->group(function() {
+    // Route to get login page
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    
+    // Route to login user
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('user.auth');
 
-// Route to get register page
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+    // Route to get register page
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    
+    // Route to create user
+    Route::post('/register', [AuthController::class, 'store'])->name('user.store');
+
+});
+

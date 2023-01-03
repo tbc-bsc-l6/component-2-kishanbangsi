@@ -97,11 +97,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $formProduct = $request->validate([
-            'title' => 'required|string',
-            'author' => 'string|nullable',
+            'title' => 'required|string|max:100',
+            'author' => 'string|nullable|max:100',
             'pages' => 'numeric|nullable',
-            'band' => 'string|nullable',
-            'studio' => 'string|nullable',
+            'band' => 'string|nullable|max:30',
+            'studio' => 'string|nullable|max:100',
             'playlength' => 'numeric|nullable',
             'price' => 'required|numeric',
             'description' => 'string|nullable',

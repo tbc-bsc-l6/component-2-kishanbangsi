@@ -7,9 +7,9 @@
             <div class="mb-8">
                 <label for="category" class="font-semibold mr-2">Product Type: </label>
                 <select name="category" id="category" class="border border-gray-300 rounded-md outline-none">
-                    <option value={{ $product->category == 'book' ? $product->category : 'book' }}>Book</option>
-                    <option value={{ $product->category == 'game' ? $product->category : 'game' }}>Game</option>
-                    <option value={{ $product->category == 'cd' ? $product->category : 'cd' }}>CD</option>
+                    <option value='book' selected="{{$product->category == 'book'}}">Book</option>
+                    <option value='game' selected="{{$product->category == 'game'}}">Game</option>
+                    <option value='cd' selected="{{$product->category == 'cd'}}">CD</option>
                 </select>
             </div>
             
