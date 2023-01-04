@@ -59,4 +59,3 @@ Route::prefix('/users')->group(function() {
     // Route to logout a user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
-

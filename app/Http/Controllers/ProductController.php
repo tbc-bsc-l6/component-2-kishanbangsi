@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -38,16 +39,16 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = $request->validated();
+        $validatedRequest = $request->validated();
 
-        $product['user_id'] = 1;
+        $validatedRequest['user_id'] = auth()->id();
 
         if($request->hasFile('image'))
         {
-            $product['image'] = $request->file('image')->store('uploaded_images', 'public');
+            $validatedRequest['image'] = $request->file('image')->store('uploaded_images', 'public');
         }
 
-        Product::create($product);
+        Product::create($validatedRequest);
 
         return redirect('/');
     }
@@ -73,6 +74,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        if (!Gate::allows('update-product', $product)) {
+            $response = Gate::inspect('update-product', $product);
+
+            dd($response->message());
+        }
+
         return view('pages.edit', [
             'product' => $product 
         ]);
@@ -89,7 +96,7 @@ class ProductController extends Controller
     {
         $validatedRequest = $request->validated();
 
-        $validatedRequest['user_id'] = 1;
+        $validatedRequest['user_id'] = auth()->id();
 
         if($request->hasFile('image'))
         {
@@ -109,6 +116,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if (!Gate::allows('delete-product', $product)) {
+            $response = Gate::inspect('delete-product', $product);
+
+            dd($response->message());
+        }
+
         $product->delete();
 
         return redirect('/');

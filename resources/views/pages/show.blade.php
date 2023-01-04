@@ -26,6 +26,7 @@
 
                 <p>Description: <span class="font-light">{{ $product->description }}</span></p>
             </div>
+            @can('update-product', $product)
             <div class="flex justify-between">
                 <a href="{{ route('edit', ['product' => $product->id]) }}" class="btn mytransition">Update</a>
                 <form action="{{ route('delete', ['product' => $product->id]) }}" method="POST">
@@ -34,6 +35,7 @@
                     <button type="submit" class="btn mytransition">Delete</button>
                 </form>
             </div>
+            @endcan
         </div>
     </section>
 </x-layout>
