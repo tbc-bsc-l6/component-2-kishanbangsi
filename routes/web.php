@@ -23,9 +23,6 @@ Route::prefix('/products')->group(function () {
     // Route to get form to create a product
     Route::get('/create', [ProductController::class, 'create'])->name('create')->middleware('auth');
 
-    // Route to get categories
-    Route::get('/all', [PageController::class, 'all'])->name('all')->middleware('auth');
-
     // Route to get a single product
     Route::get('/show/{product}', [ProductController::class, 'show'])->name('show')->middleware('auth');
 
@@ -40,6 +37,15 @@ Route::prefix('/products')->group(function () {
 
     // Route to delete a product
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('delete')->middleware('auth');
+
+    // Route to get categories
+    Route::get('/all', [PageController::class, 'all'])->name('all')->middleware('auth');
+
+    // Route to get results based on search
+    Route::get('/search', [PageController::class, 'search'])->name('search')->middleware('can:search-product');
+
+    
+    Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
 });
 
 

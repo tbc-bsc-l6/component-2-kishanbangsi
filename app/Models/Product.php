@@ -20,4 +20,16 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeFilter($query, array $filter)
+    {
+        if ($filter['search'] ?? false) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('author', 'like', '%' . request('search') . '%')
+            ->orWhere('band', 'like', '%' . request('search') . '%')
+            ->orWhere('studio', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orWhere('category', 'like', '%' . request('search') . '%');
+        }
+    }
 }

@@ -40,5 +40,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-product', function(User $user, Product $product) {
             return $user->id === $product->user_id ? Response::allow() : Response::deny('You are not authorized to delete this product!');
         });
+
+        
+        // Define a gate to authorize users to delete a product
+        Gate::define('search-product', function(User $user) {
+            return $user->id === auth()->user()->id ? Response::allow() : Response::deny('You are not authorized to search!');
+        });
     }
 }

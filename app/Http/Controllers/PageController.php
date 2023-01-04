@@ -14,6 +14,20 @@ class PageController extends Controller
         ]);
     }
 
+
+    public function search()
+    {
+        return view('pages.search', [
+            'products' => Product::latest()->filter(request(['search']))->paginate(9)
+        ]);
+    }
+
+    public function auth()
+    {
+        return view('pages.non-authorized');
+    }
+
+
     public function error()
     {
         return view('pages.404');

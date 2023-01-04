@@ -3,9 +3,9 @@
         <div>
             <h1 class="heading-dark">Your one stop for everything</h1>
             <p class="text-gray-600 mt-3">Search and shop products in one place.</p>
-            <form action="#" class="flex flex-col mt-10">
+            <form action="{{ route('search') }}" action="GET" class="flex flex-col mt-10">
                 <label for="search" class="font-bold text-gray-600 mt-3">Search for products</label>
-                <input type="text" name="search" placeholder="Name, category, tags..." class="input-class" required>
+                <input type="text" name="search" placeholder="Name, category..." class="input-class" required>
                 <button class="btn">Search</button>
             </form>
         </div>
