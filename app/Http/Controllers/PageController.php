@@ -13,4 +13,9 @@ class PageController extends Controller
             'products' => Product::latest()->paginate(9)
         ]);
     }
+
+    public function error()
+    {
+        return view('pages.404');
+    }
 }

@@ -59,3 +59,6 @@ Route::prefix('/users')->group(function() {
     // Route to logout a user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
+
+// Route to show 404 page
+Route::fallback([PageController::class, 'error']);
