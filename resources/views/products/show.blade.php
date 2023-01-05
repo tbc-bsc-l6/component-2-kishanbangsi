@@ -9,32 +9,32 @@
                 <h1 class="font-semibold text-xl">Title: <span class="font-light">{{ $product->title }}</span></h1>
 
                 @if ($product->category == 'book')
-                <p>Author: <span class="font-light">{{ $product->author}}</span></p>
+                    <p>Author: <span class="font-light">{{ $product->author}}</span></p>
                 @elseif($product->category == 'game')
-                <p>Studio: <span class="font-light">{{ $product->studio}}</span></p>
+                    <p>Studio: <span class="font-light">{{ $product->studio}}</span></p>
                 @else
-                <p>Band: <span class="font-light">{{ $product->band}}</span></p>
+                    <p>Band: <span class="font-light">{{ $product->band}}</span></p>
                 @endif
 
                 <p>Price: <span class="font-light">${{ $product->price }}</span></p>
 
                 @if ($product->category == 'book')
-                <p>Pages: <span class="font-light">{{ $product->pages }}</span></p>
+                    <p>Pages: <span class="font-light">{{ $product->pages }}</span></p>
                 @else
-                <p>Playlength: <span class="font-light">{{ $product->playlength }} min</span></p>
+                    <p>Playlength: <span class="font-light">{{ $product->playlength }} min</span></p>
                 @endif
 
                 <p>Description: <span class="font-light">{{ $product->description }}</span></p>
             </div>
             @can('update-product', $product)
-            <div class="flex justify-between">
-                <a href="{{ route('edit', ['product' => $product->id]) }}" class="btn mytransition">Update</a>
-                <form action="{{ route('delete', ['product' => $product->id]) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn mytransition">Delete</button>
-                </form>
-            </div>
+                <div class="flex justify-between">
+                    <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn mytransition">Update</a>
+                    <form action="{{ route('product.delete', ['product' => $product->id]) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn mytransition">Delete</button>
+                    </form>
+                </div>
             @endcan
         </div>
     </section>

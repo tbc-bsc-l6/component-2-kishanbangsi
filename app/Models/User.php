@@ -45,14 +45,14 @@ class User extends Authenticatable
     ];
 
 
-    // Relationship with Product table
+    // Relationship with the Product table
     public function products() 
     {
         return $this->hasMany(Product::class);
     }
 
 
-    // Mutator to encrypt password while registering
+    // Mutator to encrypt password while registering or updating
     protected function password(): Attribute
     {
         return Attribute::make(

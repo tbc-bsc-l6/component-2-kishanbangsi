@@ -24,7 +24,7 @@
                         <x-error :message='$message'/>
                         @enderror
                     </div>
-                    <p>Already have an account?<a href="{{ route('login') }}" class="link ml-2 underline">Login</a></p>
+                    <p>Already have an account?<a href="{{ route('user.login') }}" class="link ml-2 underline">Login</a></p>
                     <button type="submit" class="btn mt-3">Register</button>
                 </form>
             </div>

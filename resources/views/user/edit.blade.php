@@ -57,7 +57,7 @@
             
             <div class="mt-8">
                 <button type="submit" class="btn mb-4 md:mb-0">Update</button>
-                <a href="{{ route('index') }}" class="btn">Cancel</a>
+                <a href="{{ route('product.index') }}" class="btn">Cancel</a>
             </div>
         </form>
     </section>

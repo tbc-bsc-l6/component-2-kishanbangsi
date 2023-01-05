@@ -18,10 +18,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Ajax Goddard',
-            'email' => "ajax@gmail.com",
-            'password' => 'AjaxGoddard@123',              // password
-            'role' => 'admin'
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => 'Password@123',
         ];
     }
 

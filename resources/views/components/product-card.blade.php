@@ -15,6 +15,6 @@
         @endif
         
         <p class="font-semibold my-1">Price: <span class="font-normal ml-2">${{ $products->price }}</span></p>
-        <a href="{{ route('show', ['product' => $products->id]) }}" class="font-semibold hover:text-violet-500">View More ></a>
+        <a href="{{ route('product.show', ['product' => $products->id]) }}" class="font-semibold hover:text-violet-500">View More ></a>
     </div>
 </div>

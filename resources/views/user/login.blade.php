@@ -10,7 +10,7 @@
                 <form action="{{ route('user.auth') }}" method="POST" class="mt-4">
                     @csrf
                     <x-input />
-                    <p>Don't have an account?<a href="{{ route('register') }}" class="link ml-2 underline">Create one</a></p>
+                    <p>Don't have an account?<a href="{{ route('user.register') }}" class="link ml-2 underline">Create one</a></p>
                     <button type="submit" class="btn mt-3">Login</button>
                 </form>
             </div>

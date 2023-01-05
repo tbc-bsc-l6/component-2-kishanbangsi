@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'playlength' => fake()->numberBetween($min = 1, $max = 1000),
             'price' => fake()->numberBetween($min = 1, $max = 20),
             'description' => fake()->paragraph(),
-            'image' => fake()->imageUrl(36, 56, 'animals', true)
+            'image' => null
         ];
     }
 }

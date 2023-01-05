@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.index', [
+        return view('products.index', [
             'products' => Product::latest()->take(3)->get()
         ]);
     }
@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        return view('products.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('pages.show', [
+        return view('products.show', [
             'product' => $product
         ]);
     }
@@ -74,11 +74,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        if (!Gate::allows('update-product', $product)) {
+        if(!Gate::allows('update-product', $product)) {
             return view('/non-authorized');
         }
 
-        return view('pages.edit', [
+        return view('products.edit', [
             'product' => $product 
         ]);
     }
@@ -114,7 +114,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (!Gate::allows('delete-product', $product)) {
+        if(!Gate::allows('delete-product', $product))
+        {
             return view('/non-authorized');
         }
 

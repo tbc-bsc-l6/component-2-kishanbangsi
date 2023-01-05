@@ -9,12 +9,6 @@ use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
-    // GET login form
-    public function login() {
-        return view('pages.user.login');
-    }
-
-
     // Login user
     public function authenticate(Request $request)
     {
@@ -23,7 +17,8 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($formFields)) {
+        if (auth()->attempt($formFields)) 
+        {
             $request->session()->regenerate();
 
             return redirect('/')->withSuccess('You are now logged in!');
@@ -32,12 +27,6 @@ class AuthController extends Controller
         return back()
             ->withFail('Invalid Credentials!')
             ->onlyInput('email');
-    }
-
-
-    // GET register form
-    public function register() {
-        return view('pages.user.register');
     }
 
 

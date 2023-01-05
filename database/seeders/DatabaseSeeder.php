@@ -17,15 +17,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(1)->has(
-        //     Product::factory()->count(5)->state(new Sequence(
-        //         ['category' => 'book'],
-        //         ['category' => 'game'],
-        //         ['category' => 'cd']
-        //     ))
-        // )
-        // ->create();
+        User::factory(20)
+            ->state(
+                new Sequence(
+                    ['role' => 'admin'],
+                    ['role' => 'user']
+                )
+            )->has(
+                Product::factory()->count(10)->state(
+                    new Sequence(
+                        ['category' => 'book'],
+                        ['category' => 'game'],
+                        ['category' => 'cd']
+                    )
+                )
+            )
+        ->create();
 
-        User::factory(1)->create();
+        // User::factory(1)->create();
     }
 }

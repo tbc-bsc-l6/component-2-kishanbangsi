@@ -1,5 +1,5 @@
 <x-layout>
-    <section class="h-screen py-16 px-10">
+    <section class="h-full py-16 px-10">
         <h1 class="title-dark text-center mb-10">Users</h1>
         <table class="w-full mx-auto">
             <thead class="border-b-2 border-gray-100">
@@ -27,5 +27,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="flex justify-center mt-16">
+            {{ $users->links() }}
+        </div>
     </section>
 </x-layout>
