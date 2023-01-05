@@ -9,10 +9,11 @@ use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
-    // Show login form
+    // GET login form
     public function login() {
         return view('pages.user.login');
     }
+
 
     // Login user
     public function authenticate(Request $request)
@@ -33,18 +34,25 @@ class AuthController extends Controller
             ->onlyInput('email');
     }
 
-    // Show register form
+
+    // GET register form
     public function register() {
         return view('pages.user.register');
     }
 
-    // Create new user
+
+    // POST new user
     public function store(RegisterRequest $request)
     {
+        $validatedUser = $request->validated();
+
+        $validatedUser['role'] = 'user';
+
         User::create($request->validated());
 
         return redirect('/users/login')->withSuccess('Account created successfully!');
     }
+
 
     // Logout user
     public function logout(Request $request)

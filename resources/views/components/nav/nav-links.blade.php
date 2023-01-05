@@ -1,9 +1,16 @@
 @auth
 <p class="hidden lg:block">Welcome, {{ auth()->user()->name }}</p>
+@can('access-user-dashboard')
+<li>
+    <a href="{{ route('dashboard.user', ['id' => auth()->user()->id]) }}" class="navlinks">Dashboard</a>
+</li>
+@endcan
 @endauth
+
 <li>
     <a href="{{ route('index') }}" class="navlinks">Home</a>
 </li>
+
 @auth
 <li>
     <a href="{{ route('all') }}" class="navlinks">All Products</a>

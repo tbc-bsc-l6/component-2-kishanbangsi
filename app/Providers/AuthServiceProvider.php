@@ -29,22 +29,34 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Check if the user is admin before checking other gates
+        Gate::before(function () {
+            if(auth()->user()->role == 'admin') {
+                return true;
+            }
+        });
 
         // Define a gate to authorize users to update a product
         Gate::define('update-product', function(User $user, Product $product) {
-            return $user->id === $product->user_id ? Response::allow() : Response::deny('You are not authorized to update this product!');
+            return $user->id === $product->user_id;
         });
 
 
         // Define a gate to authorize users to delete a product
         Gate::define('delete-product', function(User $user, Product $product) {
-            return $user->id === $product->user_id ? Response::allow() : Response::deny('You are not authorized to delete this product!');
+            return $user->id === $product->user_id;
         });
 
         
-        // Define a gate to authorize users to delete a product
+        // Define a gate to authorize users to search for products
         Gate::define('search-product', function(User $user) {
-            return $user->id === auth()->user()->id ? Response::allow() : Response::deny('You are not authorized to search!');
+            return $user->id === auth()->user()->id;
+        });
+
+
+        // Define a gate to access user dashboard
+        Gate::define('access-user-dashboard', function(User $user) {
+            return $user->id === auth()->user()->id;
         });
     }
 }

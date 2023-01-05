@@ -75,9 +75,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         if (!Gate::allows('update-product', $product)) {
-            $response = Gate::inspect('update-product', $product);
-
-            dd($response->message());
+            return view('/non-authorized');
         }
 
         return view('pages.edit', [
@@ -117,9 +115,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         if (!Gate::allows('delete-product', $product)) {
-            $response = Gate::inspect('delete-product', $product);
-
-            dd($response->message());
+            return view('/non-authorized');
         }
 
         $product->delete();

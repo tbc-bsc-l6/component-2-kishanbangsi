@@ -44,11 +44,12 @@ Route::prefix('/products')->group(function () {
     // Route to get results based on search
     Route::get('/search', [PageController::class, 'search'])->name('search')->middleware('can:search-product');
 
-    
+    // Route to show page if non authorized user tries to update, delete or search products
     Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
 });
 
 
+// Route to register, login and logout
 Route::prefix('/users')->group(function() {
     // Route to get login page
     Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
@@ -64,7 +65,21 @@ Route::prefix('/users')->group(function() {
 
     // Route to logout a user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+    // Route to show page if non authorized user tries to update, delete or search products
+    Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
 });
+
+
+// Route related to dashboard
+Route::prefix('/dashboard')->group(function() {
+    // Route to show user dashboard
+    Route::get('/user/{id}', [PageController::class, 'accessUserProduct'])->name('dashboard.user')->middleware('auth');
+
+    // Route to show page if non authorized user tries to update, delete or search products
+    Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
+});
+
 
 // Route to show 404 page
 Route::fallback([PageController::class, 'error']);
