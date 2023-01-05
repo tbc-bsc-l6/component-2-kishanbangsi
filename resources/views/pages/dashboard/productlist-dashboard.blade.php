@@ -1,10 +1,11 @@
 <x-layout>
     <section class="h-screen py-16 px-10">
-        <h1 class="title-dark text-center mb-10">Your products</h1>
+        <h1 class="title-dark text-center mb-10">Products</h1>
         <table class="w-full mx-auto">
             <thead class="border-b-2 border-gray-100">
                 <tr>
                     <th class="py-4 text-xl text-gray-700">Title</th>
+                    <th class="py-4 text-xl text-gray-700">Category</th>
                     <th class="py-4  text-xl text-gray-700">Actions</th>
                 </tr>
             </thead>
@@ -12,6 +13,7 @@
                 @foreach($products as $product)
                 <tr>
                     <td class="text-center py-2 font-semibold text-gray-600">{{ $product->title }}</td>
+                    <td class="text-center py-2 font-semibold text-gray-600 capitalize">{{ $product->category }}</td>
                     <td class="text-center py-2">
                         <a 
                             href="{{ route('show', ['product' => $product->id]) }}" 

@@ -51,30 +51,45 @@ Route::prefix('/products')->group(function () {
 
 // Route to register, login and logout
 Route::prefix('/users')->group(function() {
-    // Route to get login page
+    // GET login page
     Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
     
-    // Route to login a user
+    // POST login a user
     Route::post('/login', [AuthController::class, 'authenticate'])->name('user.auth');
 
-    // Route to get register page
+    // GET register page
     Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
     
-    // Route to create a user
+    // POST create a user
     Route::post('/register', [AuthController::class, 'store'])->name('user.store');
 
-    // Route to logout a user
+    // POST logout a user
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-    // Route to show page if non authorized user tries to update, delete or search products
+    // GET form to edit a user
+    Route::get('/edit/{id}', [PageController::class, 'edit'])->name('user.edit')->middleware('auth');
+
+    // PUT a user
+    Route::put('/edit/{id}', [PageController::class, 'update'])->name('user.update')->middleware('auth');
+
+    // DELETE a user
+    Route::delete('/delete/{id}', [PageController::class, 'destroy'])->name('user.delete')->middleware('auth');
+
+    // GET page if non authorized user tries to update, delete or search products
     Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
 });
 
 
 // Route related to dashboard
 Route::prefix('/dashboard')->group(function() {
-    // Route to show user dashboard
+    // GET user dashboard
     Route::get('/user/{id}', [PageController::class, 'accessUserProduct'])->name('dashboard.user')->middleware('auth');
+
+    // GET admin dashboard for users list
+    Route::get('/admin/users-list', [PageController::class, 'accessAllUsers'])->name('dashboard.users-list')->middleware('auth');
+
+    // GET admin dashboard for products list
+    Route::get('/admin/products-list', [PageController::class, 'accessAllProducts'])->name('dashboard.products-list')->middleware('auth');
 
     // Route to show page if non authorized user tries to update, delete or search products
     Route::get('/non-authorized', [PageController::class, 'auth'])->name('auth');
