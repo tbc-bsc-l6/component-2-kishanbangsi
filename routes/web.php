@@ -45,7 +45,7 @@ Route::prefix('/products')->group(function () {
     Route::get('/all', [PageController::class, 'all'])->name('product.all')->middleware('auth');
 
     // Route to get results based on search
-    Route::get('/search', [PageController::class, 'search'])->name('product.search')->middleware('can:search-product');
+    Route::get('/search', [PageController::class, 'search'])->name('product.search')->middleware('auth');
 });
 
 
