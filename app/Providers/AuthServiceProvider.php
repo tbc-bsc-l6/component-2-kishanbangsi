@@ -37,17 +37,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         // Define a gate to authorize users to update a product
-        Gate::define('update-product', function(User $user, Product $product) {
+        Gate::define('modify-product', function(User $user, Product $product) {
             return $user->id === $product->user_id;
         });
 
 
-        // Define a gate to authorize users to delete a product
-        Gate::define('delete-product', function(User $user, Product $product) {
-            return $user->id === $product->user_id;
-        });
-
-        
         // Define a gate to authorize users to search for products
         Gate::define('search-product', function(User $user) {
             return $user->id === auth()->user()->id;

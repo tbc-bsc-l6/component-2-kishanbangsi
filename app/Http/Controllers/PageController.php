@@ -31,7 +31,7 @@ class PageController extends Controller
     }
 
     // GET not authorized page
-    public function redirect()
+    public function unauth()
     {
         return view('error.non-authorized');
     }

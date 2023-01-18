@@ -90,7 +90,7 @@ Route::prefix('/dashboard')->group(function() {
 });
 
 // GET this page if non authorized user tries to update, delete or search products
-Route::get('/non-authorized', [PageController::class, 'redirect'])->name('non-auth');
+Route::get('/non-authorized', [PageController::class, 'unauth'])->name('non-auth');
 
 // Route to show 404 page
 Route::fallback([PageController::class, 'error']);

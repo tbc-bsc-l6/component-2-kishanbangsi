@@ -74,8 +74,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        if(!Gate::allows('update-product', $product)) {
-            return view('/non-authorized');
+        if(!Gate::allows('modify-product', $product)) {
+            return redirect('/non-authorized');
         }
 
         return view('products.edit', [
@@ -114,9 +114,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if(!Gate::allows('delete-product', $product))
+        if(!Gate::allows('modify-product', $product))
         {
-            return view('/non-authorized');
+            return redirect('/non-authorized');
         }
 
         $product->delete();
