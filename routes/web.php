@@ -27,19 +27,19 @@ Route::prefix('/products')->group(function () {
     Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
 
     // GET a single product
-    Route::get('/show/{product}', [ProductController::class, 'show'])->name('product.show')->middleware('auth');
+    Route::get('/show/{product}', [ProductController::class, 'show'])->whereNumber('product')->name('product.show')->middleware('auth');
 
     // Route to store a product
     Route::post('/', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
 
     // Route to get form to update a product
-    Route::get('/update/{product}', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
+    Route::get('/update/{product}', [ProductController::class, 'edit'])->whereNumber('product')->name('product.edit')->middleware('auth');
 
     // Route to update a product
-    Route::put('/update/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
+    Route::put('/update/{product}', [ProductController::class, 'update'])->whereNumber('product')->name('product.update')->middleware('auth');
 
     // Route to delete a product
-    Route::delete('/{product}', [ProductController::class, 'destroy'])->name('product.delete')->middleware('auth');
+    Route::delete('/{product}', [ProductController::class, 'destroy'])->whereNumber('product')->name('product.delete')->middleware('auth');
 
     // Route to get categories
     Route::get('/all', [PageController::class, 'all'])->name('product.all')->middleware('auth');
@@ -58,7 +58,7 @@ Route::prefix('/users')->group(function() {
     Route::get('/register', [UserController::class, 'register'])->name('user.register')->middleware('guest');
     
     // GET form to edit a user
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->whereNumber('id')->name('user.edit')->middleware('auth');
 
     // POST login a user
     Route::post('/login', [AuthController::class, 'authenticate'])->name('user.auth');
@@ -70,17 +70,17 @@ Route::prefix('/users')->group(function() {
     Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout')->middleware('auth');
 
     // PUT a user
-    Route::put('/edit/{id}', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+    Route::put('/edit/{id}', [UserController::class, 'update'])->whereNumber('id')->name('user.update')->middleware('auth');
 
     // DELETE a user
-    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('user.delete')->middleware('auth');
+    Route::delete('/delete/{id}', [UserController::class, 'destroy'])->whereNumber('id')->name('user.delete')->middleware('auth');
 });
 
 
 // Route related to dashboard
 Route::prefix('/dashboard')->group(function() {
     // GET user dashboard
-    Route::get('/user/{id}', [DashboardController::class, 'getUserProduct'])->name('dashboard.user')->middleware('auth');
+    Route::get('/user/{id}', [DashboardController::class, 'getUserProduct'])->whereNumber('id')->name('dashboard.user')->middleware('auth');
 
     // GET admin dashboard for users list
     Route::get('/admin/users-list', [DashboardController::class, 'getAllUsers'])->name('dashboard.users-list')->middleware('auth');
