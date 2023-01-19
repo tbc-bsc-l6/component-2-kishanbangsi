@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center py-4 px-16">
         <!-- Logo -->
         <div>
-            <h1 class="text-2xl font-bold text-gray-600">SmallMart</h1>
+            <h1 class="text-2xl font-bold text-gray-600"><a href={{ route('product.index') }}>SmallMart</a></h1>
         </div>
         <!-- Menu -->
         <div>
